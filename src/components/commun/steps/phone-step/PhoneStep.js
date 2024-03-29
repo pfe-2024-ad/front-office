@@ -1,4 +1,4 @@
-import './EmailStep.css'
+import './PhoneStep.css'
 import StepContainer from "../general-container-step/StepContainer";
 import StepContent from "../general-content-step/StepContent";
 
