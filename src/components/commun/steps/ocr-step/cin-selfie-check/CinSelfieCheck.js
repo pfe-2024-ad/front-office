@@ -18,15 +18,18 @@ function CinSelfieCheck() {
     let idClient = sessionStorage.getItem('idClient');
 
     
-    const [response, setResponse] = useState({similarity: null, nom: null,  prenom: null, dateNaissance: null, cin: null, adresseResidence: null});
+    const [response, setResponse] = useState({status: null, nom: null,  prenom: null, dateNaissance: null, cin: null, adresseResidence: null});
 
     let navigate = useNavigate();
 
     
 
     useEffect( () => {
-        if(response.similarity === "100%"){
-            setResponseGlobal(response);
+        if(response.status === "01"){
+            setResponseGlobal({nom: response.nom, prenom: response.prenom, 
+                dateNaissance: response.dateNaissance, cin: response.cin,
+                adresseResidence: response.adresseResidence
+            });
             navigate("/verification-donnees");
         }
     })
@@ -44,7 +47,14 @@ function CinSelfieCheck() {
             body: formData
         })                
         .then(response => response.json())
-        .then(data => setResponse({similarity: data.similarity, nom: data.nom,  prenom: data.prenom, dateNaissance: data.dateNaissance, cin: data.cin, adresseResidence: data.adresseResidence}));
+        .then(data => {
+            if(data.status === "02"){
+                console.log("erreur");
+            } else if (data.status ==="01"){
+                console.log("ok");
+                setResponse(data);
+            }
+        });
              
     }
 
