@@ -5,10 +5,20 @@ import Home from './components/home/Home.js'
 import ConfirmationStep from './components/commun/steps/confirmation-step/ConfirmationStep.js'
 
 
+
+
+import EmailStep from './components/commun/steps/email-step/EmailStep.js'
+
+
 function RoutesApp() {
     return(
         <Routes>
             <Route path="/" element={<Home />} />
+
+
+
+
+            <Route path="/verification-email" element={<EmailStep />} />
 
             <Route path="/verification-donnees" element={<ConfirmationStep />} />
 
