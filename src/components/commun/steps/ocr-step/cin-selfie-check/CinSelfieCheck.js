@@ -18,21 +18,12 @@ function CinSelfieCheck() {
     let idClient = sessionStorage.getItem('idClient');
 
     
-    const [response, setResponse] = useState({status: null, nom: null,  prenom: null, dateNaissance: null, cin: null, adresseResidence: null});
 
     let navigate = useNavigate();
 
     
 
-    useEffect( () => {
-        if(response.status === "01"){
-            setResponseGlobal({nom: response.nom, prenom: response.prenom, 
-                dateNaissance: response.dateNaissance, cin: response.cin,
-                adresseResidence: response.adresseResidence
-            });
-            navigate("/verification-donnees");
-        }
-    })
+  
 
     function handleUpload(e) {
         e.preventDefault();
@@ -52,7 +43,11 @@ function CinSelfieCheck() {
                 console.log("erreur");
             } else if (data.status ==="01"){
                 console.log("ok");
-                setResponse(data);
+                setResponseGlobal({nom: data.nom, prenom: data.prenom, 
+                    dateNaissance: data.dateNaissance, cin: data.cin,
+                    adresseResidence: data.adresseResidence
+                });
+                navigate("/verification-donnees");
             }
         });
              
