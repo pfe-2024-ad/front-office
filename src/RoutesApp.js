@@ -7,6 +7,8 @@ import Etudiant from './components/commun/profils/Etudiant.js'
 import Professionnel from './components/commun/profils/Professionnel.js'
 
 
+import ConfirmationStep from './components/commun/steps/confirmation-step/ConfirmationStep.js'
+
 
 function RoutesApp() {
     return(
@@ -16,6 +18,7 @@ function RoutesApp() {
             <Route path="/MRE-ouvrir-un-compte-bancaire-au-maroc" element={<Mre />} />
             <Route path="/compte-bancaire-en-ligne-pour-etudiant" element={<Etudiant />} />
             <Route path="/professional-offres" element={<Professionnel/>} />
+            <Route path="/verification-donnees" element={<ConfirmationStep />} />
         </Routes>
     )
 }
