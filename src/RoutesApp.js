@@ -10,6 +10,11 @@ import Professionnel from './components/commun/profils/Professionnel.js'
 import ConfirmationStep from './components/commun/steps/confirmation-step/ConfirmationStep.js'
 
 
+
+
+import EmailStep from './components/commun/steps/email-step/EmailStep.js'
+
+
 function RoutesApp() {
     return(
         <Routes>
@@ -18,6 +23,7 @@ function RoutesApp() {
             <Route path="/MRE-ouvrir-un-compte-bancaire-au-maroc" element={<Mre />} />
             <Route path="/compte-bancaire-en-ligne-pour-etudiant" element={<Etudiant />} />
             <Route path="/professional-offres" element={<Professionnel/>} />
+            <Route path="/verification-email" element={<EmailStep />} />
             <Route path="/verification-donnees" element={<ConfirmationStep />} />
         </Routes>
     )
