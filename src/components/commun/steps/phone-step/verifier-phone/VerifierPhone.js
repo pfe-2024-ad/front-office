@@ -25,18 +25,19 @@ function VerifierPhone({keyPhone, numPhone}){
             };
             fetch('http://localhost:7777/agd/security-service/otp_phone/compare', requestOptions)
                 .then(response => response.text())
-                .then(data => {setResponse(data)})
+                .then(data => {
+                    setResponse(data);
+                    if (data === "01") {
+                        console.log("here-phone8");
+                        setNumPhone(phone);
+                        navigate("/verification-identite");
+                        }
+                });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [otpPhone]);
 
-    useEffect(() => {
-        if(response==="01"){
-            console.log("here-phone8") 
-            setNumPhone(phone);
-            navigate("/verification-identite");
-        }
-    })
+
 
     function handleSubmitOtpPhone(e) {
         e.preventDefault();
