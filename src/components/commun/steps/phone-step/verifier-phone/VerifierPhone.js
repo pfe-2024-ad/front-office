@@ -1,5 +1,5 @@
 import './VerifierPhone.css'
-
+import StatusOTP from '../../../enums/StatusOtp'
 import {useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,7 @@ function VerifierPhone({keyPhone, numPhone}){
                 .then(response => response.text())
                 .then(data => {
                     setResponse(data);
-                    if (data === "01") {
+                    if (data === StatusOTP.VALID) {
                         console.log("here-phone8");
                         setNumPhone(phone);
                         navigate("/verification-identite");
