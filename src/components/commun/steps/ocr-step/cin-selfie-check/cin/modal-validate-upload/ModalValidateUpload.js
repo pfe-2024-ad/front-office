@@ -2,7 +2,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useGlobalState } from '../../../../GlobalState';
-//import { useState } from 'react';
+import CinUploadStatut from '../../../../../enums/CinUploadStatut';
 
 import './ModalValidateUpload.css'
 
@@ -16,20 +16,20 @@ function ModalValidateUpload({show, onHideValidate, onHidePrendrePhoto, fileChar
     }
 
     function handleValidateUpload(e) {
-        if(cinUpload==="cinRecto"){
+        if(cinUpload===CinUploadStatut.cinRecto){
             console.log("cinUpload = cinRecto ");
             console.log(fileObject);
             setFile1(fileObject);
             onHideValidate();
             
         }
-        else if(cinUpload==="cinVerso"){
+        else if(cinUpload===CinUploadStatut.cinVerso){
             console.log("cinUpload = cinVerso ");
             console.log(fileObject);
             setFile2(fileObject);
             onHideValidate();
         }
-        else if(cinUpload==="selfie"){
+        else if(cinUpload===CinUploadStatut.selfie){
             console.log("cinUpload = selfie ");
             console.log(fileObject);
             setFile3(fileObject);

@@ -4,8 +4,7 @@ import './CinSelfieCheck.css';
 import cinlogo from "../../../../assets/cin-check.png";
 import selfielogo from "../../../../assets/selfie-check.png";
 import Button from 'react-bootstrap/Button';
-
-import { useState, useEffect } from 'react';
+import OcrStatut from '../../../enums/OcrStatut'
 import { useNavigate } from "react-router-dom";
 
 import { useGlobalState } from '../../GlobalState.js';
@@ -39,9 +38,9 @@ function CinSelfieCheck() {
         })                
         .then(response => response.json())
         .then(data => {
-            if(data.status === "02"){
+            if(data.status === OcrStatut.ERROR){
                 console.log("erreur");
-            } else if (data.status ==="01"){
+            } else if (data.status ===OcrStatut.SUCCESSFUL){
                 console.log("ok");
                 setResponseGlobal({nom: data.nom, prenom: data.prenom, 
                     dateNaissance: data.dateNaissance, cin: data.cin,
