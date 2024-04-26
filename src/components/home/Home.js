@@ -1,5 +1,6 @@
-import homeimg from '../../assets/home-img.png'
-import './Home.css'
+import homeimg from '../../assets/home-img.png';
+import './Home.css';
+import ListOffers from './list-offers/ListOffers';
 
 
 function Home() {
@@ -15,6 +16,9 @@ function Home() {
                 <span className="l2">0</span>
                 <span className="l3">DH</span>
             </div>
+        </div>
+        <div className='offers'>
+            <ListOffers />
         </div>
     </div>
     )
