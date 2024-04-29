@@ -23,10 +23,7 @@ function ModalUpload({show, onHide, cinUpload}: ModalUploadProps) {
 
     useEffect(() => {
         if(file){
-            console.log(file)
-            console.log(fileObject)
             setModalValidateUploadShow(true);
-            
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [file])
@@ -45,6 +42,7 @@ function ModalUpload({show, onHide, cinUpload}: ModalUploadProps) {
         show={show}
         onHide={onHide}
         size="md"
+        style={{height: '100%' ,width: '101.1%'}}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >

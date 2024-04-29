@@ -16,6 +16,10 @@
     border-bottom: 2px #000000 solid;
     margin-bottom: 2%;
 }
+.a-style {
+    color: rgb(51, 153, 254);
+}
+
 .button-saisir-email-otp {
     color: #ffffff;
     width: 20%;

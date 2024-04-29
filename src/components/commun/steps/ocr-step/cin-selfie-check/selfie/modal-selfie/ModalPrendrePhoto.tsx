@@ -47,11 +47,10 @@ function ModalPrendrePhoto({ show, onHide }: ModalPrendrePhotoProps) {
             <Modal
                 show={show}
                 onHide={onHide}
-                size="md"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton>
+                <Modal.Header closeButton style={{height:'60px'}}>
                     <p className='title-upload'>Veuillez prendre une photo</p>
                 </Modal.Header>
                 <Modal.Body>
@@ -60,8 +59,8 @@ function ModalPrendrePhoto({ show, onHide }: ModalPrendrePhotoProps) {
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
                             width={450}
-                            height={300}
-                            style={{ paddingLeft: '20px' }}
+                            height={200}
+                            
                         />
                 </Modal.Body>
                 <Modal.Footer className='modal-footer-upload'>

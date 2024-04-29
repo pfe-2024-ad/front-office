@@ -4,16 +4,21 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import {useState, ChangeEvent, FormEvent} from 'react';
 import { submitConfirmationStep } from '../../../../../ApiService';
+import SaveInfoClientStatus from '../../../../../enums/SaveInfoClientStatus';
+import NotificationModal from '../../../notification-modal/NotificationModal'
 
 function ConfirmationFormulaire(){
 
-    const { responseGlobal, numPhone } = useGlobalState();
+    const { responseGlobal, setResponseGlobal, numPhone } = useGlobalState();
 
     let navigate = useNavigate();
 
     const [ response, setResponse ] = useState<string>();
 
-
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [mssgErreur, SetMssgErreur] = useState<string>();
     
     const [mobilite, setMobilite] = useState<string>(''); 
 
@@ -30,21 +35,34 @@ function ConfirmationFormulaire(){
         const prenomValue: string = (e.target as HTMLFormElement)['prenom'].value;
         const naissanceValue: string = (e.target as HTMLFormElement)['naissance'].value;
         const cinValue: string = (e.target as HTMLFormElement)['cin'].value;
-        const professionValue: string = (e.target as HTMLFormElement)['profession'].value;
         const adresseValue: string = (e.target as HTMLFormElement)['adresse'].value;
+        const professionValue: string = (e.target as HTMLFormElement)['profession'].value;
         const postalValue: string = (e.target as HTMLFormElement)['postal'].value;
         const villeValue: string = (e.target as HTMLFormElement)['ville'].value;
+
+        setResponseGlobal({
+            nom: nomValue,
+            prenom: prenomValue,
+            dateNaissance: naissanceValue,
+            cin: cinValue,
+            adresseResidence: adresseValue,
+            ville: villeValue
+        });
         submitConfirmationStep(nomValue, prenomValue, naissanceValue, cinValue, adresseValue, villeValue, professionValue, postalValue, mobilite)
             .then(data => {
-                if(data === "01"){
+                if(data === SaveInfoClientStatus.SUCCESSFUL){
                     navigate("/choisir-agence");
+                } else if (data === SaveInfoClientStatus.ERROR) {
+                    //setMssgErreur
+                    SetMssgErreur("something went wrong !!")
+                    handleShow();
                 }
             })
             .catch(error => console.error(error));
         
     }
 
-    return (
+    return (<>
         <div className='style-update-formulaire'>
             <p className="p-update-formulaire">
                 Veuillez vérifier et compléter votre formulaire ainsi que les autres piéces justificatives
@@ -55,13 +73,13 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="prenom">Prénom</label>
                            <br />
-                           <input className='input-form-update' type='text' name='prenom' defaultValue={responseGlobal.prenom}/>
+                           <input className='input-form-update' type='text' name='prenom' defaultValue={responseGlobal.prenom} required/>
                            <br />
                         </div>
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="nom">Nom</label>
                            <br />
-                           <input className='input-form-update' type='text' name='nom' defaultValue={responseGlobal.nom} />
+                           <input className='input-form-update' type='text' name='nom' defaultValue={responseGlobal.nom} required/>
                            <br />
                         </div>
                     </div>
@@ -69,13 +87,13 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="naissance">Date de naissance</label>
                            <br />
-                           <input className='input-form-update' type='text' name='naissance' defaultValue={responseGlobal.dateNaissance}/>
+                           <input className='input-form-update' type='text' name='naissance' defaultValue={responseGlobal.dateNaissance} required/>
                            <br />
                         </div>
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="tel">Numéro de téléphone</label>
                            <br />
-                           <input className='input-form-update' type='text' name='tel' value={numPhone} readOnly/>
+                           <input className='input-form-update' type='text' name='tel' value={numPhone} readOnly required/>
                            <br />
                         </div>
                     </div>
@@ -83,13 +101,13 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="cin">CIN</label>
                            <br />
-                           <input className='input-form-update' type='text' name='cin' defaultValue={responseGlobal.cin} />
+                           <input className='input-form-update' type='text' name='cin' defaultValue={responseGlobal.cin} required/>
                            <br />
                         </div>
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="profession">Profession</label>
                            <br />
-                           <input className='input-form-update' type='text' name='profession' />
+                           <input className='input-form-update' type='text' name='profession' required/>
                            <br />
                         </div>
                     </div>
@@ -97,13 +115,13 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="adresse">Adresse de résidence</label>
                            <br />
-                           <input className='input-form-update' type='text' name='adresse' defaultValue={responseGlobal.adresseResidence}/>
+                           <input className='input-form-update' type='text' name='adresse' defaultValue={responseGlobal.adresseResidence} required/>
                            <br />
                         </div >
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="postal">Code Postal</label>
                            <br />
-                           <input className='input-form-update' type='text' name='postal' />
+                           <input className='input-form-update' type='text' name='postal' required/>
                            <br />
                         </div>
                     </div>
@@ -111,7 +129,7 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="ville">Ville</label>
                            <br />
-                           <input className='input-form-update' type='text' name='ville' />
+                           <input className='input-form-update' type='text' name='ville' required/>
                            <br />
                         </div>
                     </div>
@@ -122,11 +140,11 @@ function ConfirmationFormulaire(){
                     </div>
                     <div className="style-form-lign" style={{marginTop: "0.5%", justifyContent: "flex-start"}}> 
                         <label>
-                           <input type="radio" value="true" checked={mobilite === "true"} onChange={handleChange} />
+                           <input type="radio" name="mobilite" value="true" checked={mobilite === "true"} onChange={handleChange} required/>
                            Oui
                         </label>
                         <label style={{paddingLeft:"2%"}}>
-                           <input type="radio" value="false" checked={mobilite === "false"} onChange={handleChange} />
+                           <input type="radio" name="mobilite" value="false" checked={mobilite === "false"} onChange={handleChange} required/>
                            Non
                         </label>
                     </div>
@@ -136,6 +154,11 @@ function ConfirmationFormulaire(){
                 </div>
             </form>
         </div>
+
+        <NotificationModal show={show} onHide={handleClose} modalColor={{backgroundColor:"rgb(251 0 46)"}}>
+            {mssgErreur}
+        </NotificationModal>
+    </>
     )
 }
 export default ConfirmationFormulaire
