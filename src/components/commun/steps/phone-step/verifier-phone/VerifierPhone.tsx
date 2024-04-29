@@ -20,7 +20,6 @@ interface VerifierPhoneProps {
 }
   
 function VerifierPhone({ keyPhone, numPhone }: VerifierPhoneProps) {
-    const [otpPhone, setOtpPhone] = useState<string>();
 
     const {setNumPhone} = useGlobalState();
 
@@ -38,9 +37,12 @@ function VerifierPhone({ keyPhone, numPhone }: VerifierPhoneProps) {
     
     let navigate = useNavigate();
 
-    useEffect(() => {
-        if (otpPhone) {
-            validateOtpPhone(otpPhone, keyPhone, numPhone)
+
+
+    function handleSubmitOtpPhone(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const otpPhoneValue = (e.target as HTMLFormElement)['otpPhone'].value;
+        validateOtpPhone(otpPhoneValue, keyPhone, numPhone)
                 .then(data => {
                     if(data === StatusOtp.VALID) {
                         setNumPhone(phone);
@@ -56,20 +58,12 @@ function VerifierPhone({ keyPhone, numPhone }: VerifierPhoneProps) {
                     }
                 })
                 .catch(error => console.error(error));
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [otpPhone]);
-
-    function handleSubmitOtpPhone(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        const otpPhoneValue = (e.target as HTMLFormElement)['otpPhone'].value;
-        setOtpPhone(otpPhoneValue);
     }
 
     const handleRenvoyerOTPClick = () => {
         generateOtpPhone(keyPhone, numPhone)
             .then(data => {
-                if(data === OtpGenerationStatus.SUCCESS) {
+                if(data === OtpGenerationStatus.SUCCESS || data === OtpGenerationStatus.EMAIL_ERROR) {
                     SetMssgModalNotification("Un sms de confirmation vous a été envoye sur votre phone. Veuillez saisir le code recu pour valider votre numero de telephone");
                     setModalColor("#0cf569")
                     handleShow();

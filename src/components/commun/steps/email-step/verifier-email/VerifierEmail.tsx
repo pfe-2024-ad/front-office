@@ -18,7 +18,6 @@ interface VerifierEmailProps {
 }
   
 function VerifierEmail({ email }: VerifierEmailProps) {
-    const [otpEmail, setOtpEmail] = useState<string>();
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -38,9 +37,10 @@ function VerifierEmail({ email }: VerifierEmailProps) {
 
     let navigate = useNavigate();
 
-    useEffect(() => {
-        if (otpEmail) {
-            validateOtpEmail(email, otpEmail, profil, nomPack)
+    function handleSubmitOtpEmail(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const otpEmailValue = (e.target as HTMLFormElement)['otpEmail'].value;
+        validateOtpEmail(email, otpEmailValue, profil, nomPack)
                 .then(data => { 
                     if(data.statusOtp === StatusOtp.VALID) {
                         let idClient: number = data.idClient;
@@ -59,14 +59,6 @@ function VerifierEmail({ email }: VerifierEmailProps) {
                     }
                 })
                 .catch(error => console.error(error));
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [otpEmail]);
-
-    function handleSubmitOtpEmail(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        const otpEmailValue = (e.target as HTMLFormElement)['otpEmail'].value;
-        setOtpEmail(otpEmailValue);
     }
 
     const handleRenvoyerOTPClick = () => {

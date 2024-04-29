@@ -24,10 +24,19 @@ function SaisirPhone() {
     
 
     useEffect(() => {
-        if (keyPhone && numPhone) {
-            generateOtpPhone(keyPhone, numPhone)
-                .then(data => {
-                    if(data === OtpGenerationStatus.SUCCESS) {
+        setShow(false);
+    }, []);
+
+
+    function handleSubmitPhone(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const keyPhoneValue = (e.target as HTMLFormElement)['keyPhone'].value;
+        const numPhoneValue = (e.target as HTMLFormElement)['numPhone'].value;
+        setKeyPhone(keyPhoneValue);
+        setNumPhone(numPhoneValue);
+        generateOtpPhone(keyPhoneValue, numPhoneValue)
+            .then(data => {
+                    if(data === OtpGenerationStatus.SUCCESS || data === OtpGenerationStatus.EMAIL_ERROR) {
                         setResponse(data);
                         SetMssgModalNotification("Un SMS de confirmation vous a été envoyé sur votre phone. Veuillez saisir le code reçu pour valider votre numéro de téléphone");
                         setModalColor("#0cf569")
@@ -40,21 +49,10 @@ function SaisirPhone() {
                 })
                 .catch(error => console.error(error));
 
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [numPhone]);
-
-
-    function handleSubmitPhone(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        const keyPhoneValue = (e.target as HTMLFormElement)['keyPhone'].value;
-        const numPhoneValue = (e.target as HTMLFormElement)['numPhone'].value;
-        setKeyPhone(keyPhoneValue);
-        setNumPhone(numPhoneValue);
     }
 
     return( <>
-        {   !response ? (
+        {   !response ? ( <>
                 <div className='style-saisir-phone'>
                 <p className="p-phone">Veuillez saisir votre numéro de téléphone pour finaliser la création de votre espace personnel.</p>
                 <form onSubmit={handleSubmitPhone}>
@@ -64,8 +62,13 @@ function SaisirPhone() {
                     <input className='input-phone' type='text' name='numPhone' required/>
                     <br />
                     <Button className='button-saisir-phone' type='submit'>Suivant</Button>
-            </form>
-        </div>
+                </form>
+                </div>
+
+                <NotificationModal show={show} onHide={handleClose} modalColor={{backgroundColor: modalColor}}>
+                    {mssgModalNotification}
+                </NotificationModal>
+             </>
         ) : ( <>
             <VerifierPhone keyPhone={keyPhone!} numPhone={numPhone!}/>
             <NotificationModal show={show} onHide={handleClose} modalColor={{backgroundColor: modalColor}}>

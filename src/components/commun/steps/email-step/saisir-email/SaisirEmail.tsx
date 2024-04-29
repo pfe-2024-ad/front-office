@@ -21,9 +21,17 @@ function SaisirEmail() {
     const [mssgModalNotification, SetMssgModalNotification] = useState<string>();
     const [modalColor, setModalColor] = useState<string>();
 
+
     useEffect(() => {
-        if (email) {
-            generateOtpEmail(email)
+        setShow(false);
+    },[])
+
+
+    function handleSubmit(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const emailValue = (e.target as HTMLFormElement)['email'].value;
+        setEmail(emailValue);
+        generateOtpEmail(emailValue)
                 .then(data => {
                     if(data === OtpGenerationStatus.SUCCESS) {
                         setResponse(data);
@@ -37,21 +45,12 @@ function SaisirEmail() {
                     }
                 })
                 .catch(error => console.error(error));
-        }
-    }, [email]);
-
-
-
-    function handleSubmit(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        const emailValue = (e.target as HTMLFormElement)['email'].value;
-        setEmail(emailValue);
     }
 
 
     return( <>
         {
-            !response ? (
+            !response ? ( <>
                 <div className='style-saisir-email'>
                     <p className="p-email">Veuillez saisir votre adresse email afin de créer votre espace personnel</p>
                     
@@ -63,6 +62,11 @@ function SaisirEmail() {
                         <Button className='button-saisir-email' type='submit'>Suivant</Button>
                     </form>
                 </div>
+
+                <NotificationModal show={show} onHide={handleClose} modalColor={{backgroundColor: modalColor}}>
+                    {mssgModalNotification}
+                </NotificationModal>
+            </>
             ) : (<> 
                 <VerifierEmail email={email!} />
                 <NotificationModal show={show} onHide={handleClose} modalColor={{backgroundColor: modalColor}}>
