@@ -5,19 +5,13 @@ import Particulier from './components/commun/profils/Particulier.js'
 import Mre from './components/commun/profils/Mre.js'
 import Etudiant from './components/commun/profils/Etudiant.js'
 import Professionnel from './components/commun/profils/Professionnel.js'
-
-
 import ConfirmationStep from './components/commun/steps/confirmation-step/ConfirmationStep.js'
-
-
-
-
 import EmailStep from './components/commun/steps/email-step/EmailStep.js'
-
-
-
-
+import OcrStep from './components/commun/steps/ocr-step/OcrStep.js'
 import PhoneStep from '../src/components/commun/steps/phone-step/PhoneStep.js'
+
+
+
 
 
 function RoutesApp() {
@@ -30,6 +24,7 @@ function RoutesApp() {
             <Route path="/professional-offres" element={<Professionnel/>} />
             <Route path="/verification-email" element={<EmailStep />} />
             <Route path="/verification-phone" element={<PhoneStep />} />
+            <Route path="/verification-identite" element={<OcrStep />} />
             <Route path="/verification-donnees" element={<ConfirmationStep />} />
         </Routes>
     )
