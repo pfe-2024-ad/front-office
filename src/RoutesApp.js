@@ -15,6 +15,11 @@ import ConfirmationStep from './components/commun/steps/confirmation-step/Confir
 import EmailStep from './components/commun/steps/email-step/EmailStep.js'
 
 
+
+
+import PhoneStep from '../src/components/commun/steps/phone-step/PhoneStep.js'
+
+
 function RoutesApp() {
     return(
         <Routes>
@@ -24,6 +29,7 @@ function RoutesApp() {
             <Route path="/compte-bancaire-en-ligne-pour-etudiant" element={<Etudiant />} />
             <Route path="/professional-offres" element={<Professionnel/>} />
             <Route path="/verification-email" element={<EmailStep />} />
+            <Route path="/verification-phone" element={<PhoneStep />} />
             <Route path="/verification-donnees" element={<ConfirmationStep />} />
         </Routes>
     )
