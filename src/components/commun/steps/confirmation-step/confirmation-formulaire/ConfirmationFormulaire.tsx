@@ -13,14 +13,13 @@ function ConfirmationFormulaire(){
 
     let navigate = useNavigate();
 
-    const [ response, setResponse ] = useState<string>();
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [mssgErreur, SetMssgErreur] = useState<string>();
     
-    const [mobilite, setMobilite] = useState<string>(''); 
+    const [mobilite, setMobilite] = useState<string>(); 
 
     // fonction pour mettre à jour l'état lorsque le client sélectionne une option
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +47,7 @@ function ConfirmationFormulaire(){
             adresseResidence: adresseValue,
             ville: villeValue
         });
-        submitConfirmationStep(nomValue, prenomValue, naissanceValue, cinValue, adresseValue, villeValue, professionValue, postalValue, mobilite)
+        submitConfirmationStep(nomValue, prenomValue, naissanceValue, cinValue, adresseValue, villeValue, professionValue, postalValue, mobilite!)
             .then(data => {
                 if(data === SaveInfoClientStatus.SUCCESSFUL){
                     navigate("/choisir-agence");
