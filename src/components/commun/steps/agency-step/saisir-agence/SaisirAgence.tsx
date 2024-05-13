@@ -17,7 +17,6 @@ function SaisirAgence() {
   const [ville, setVille] = useState<string>();
   const [agence, setAgence] = useState<string>();
 
-  const { setAgenceProximite } = useGlobalState();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -52,7 +51,6 @@ function SaisirAgence() {
     saisirAgencyStep(ville!, agence!)
       .then(data => {
         if (data === SaveInfoClientStatus.SUCCESSFUL) {
-          setAgenceProximite(agence + " " + ville);
           navigate("/recap-donnees");
         } else if (data === SaveInfoClientStatus.ERROR) {
           SetMssgErreur("something went wrong !!");

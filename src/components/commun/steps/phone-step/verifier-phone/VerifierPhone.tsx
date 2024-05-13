@@ -21,7 +21,6 @@ interface VerifierPhoneProps {
   
 function VerifierPhone({ keyPhone, numPhone }: VerifierPhoneProps) {
 
-    const {setNumPhone} = useGlobalState();
 
     const phone = keyPhone + numPhone;
 
@@ -45,7 +44,6 @@ function VerifierPhone({ keyPhone, numPhone }: VerifierPhoneProps) {
         validateOtpPhone(otpPhoneValue, keyPhone, numPhone)
                 .then(data => {
                     if(data === StatusOtp.VALID) {
-                        setNumPhone(phone);
                         navigate("/verification-identite");
                     } else if( data=== StatusOtp.INVALID || data === StatusOtp.TIMEOUT) {
                         SetMssgModalNotification("Le code saisie n'est pas correct, veuillez saisir le bon code")

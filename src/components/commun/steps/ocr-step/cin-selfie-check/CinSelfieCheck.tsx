@@ -15,7 +15,6 @@ import OcrStatus from "../../../../../enums/OcrStatus";
 
 function CinSelfieCheck() {
 
-    const { setResponseGlobal } = useGlobalState();
     const { file1, file2, file3 } = useGlobalState();
 
     const [show, setShow] = useState(false);
@@ -34,14 +33,6 @@ function CinSelfieCheck() {
         submitOcrStep(file1, file2, file3)
         .then(data => {
             if (data.status === OcrStatus.SUCCESSFUL){
-                setResponseGlobal({
-                    nom: data.nom, 
-                    prenom: data.prenom, 
-                    dateNaissance: data.dateNaissance, 
-                    cin: data.cin,
-                    adresseResidence: data.adresseResidence,
-                    ville: ''
-                });
                 navigate("/verification-donnees");
             } else if(data.status === OcrStatus.ERROR) {
                 SetMssgErreur("Votre photo d'identité ne correspond pas à votre selfie. Veuillez soumettre une photo claire de vous-même.")
