@@ -9,6 +9,7 @@ import NotificationModal from '../../../../commun/notification-modal/Notificatio
 import SaisirEmail from '../saisir-email/SaisirEmail';
 import { generateOtpEmail } from "../../../../../ApiService"
 import OtpGenerationStatus from '../../../../../enums/OtpGenerationStatus';
+import { List } from 'immutable';
 
 
 
@@ -31,16 +32,43 @@ function VerifierEmail({ email }: VerifierEmailProps) {
 
     const [showSaisirEmail, setShowSaisirEmail] = useState<boolean>(false);
 
+    // Récupérer les données depuis sessionStorage
 
     let profil: string = sessionStorage.getItem('profil')!;
     let nomPack: string = sessionStorage.getItem('nomPack')!;
+    let selectedAccount: string|null = sessionStorage.getItem('selectedAccount');
+
+    const selectedOptionsString = sessionStorage.getItem('selectedOptions');
+    let selectedOptions: List<string> | null = null;
+    if (selectedOptionsString) {
+        selectedOptions = List(JSON.parse(selectedOptionsString));
+    }
+
+    const selectedCardsString = sessionStorage.getItem('selectedCards');
+    let selectedCards: List<string> | null = null;
+    if (selectedCardsString) {
+        selectedCards = List(JSON.parse(selectedCardsString));
+    }
+
+    const isReceptionActivatedString = sessionStorage.getItem('isReceptionActivated');
+    let isReceptionActivated: List<boolean> | null = null;
+    if (isReceptionActivatedString) {
+        isReceptionActivated = List(JSON.parse(isReceptionActivatedString));
+    }
+
+    const selectedOptions2String = sessionStorage.getItem('selectedOptions2');
+    let selectedOptions2: List<string> | null = null;
+    if (selectedOptions2String) {
+        selectedOptions2 = List(JSON.parse(selectedOptions2String));
+    }
+
 
     let navigate = useNavigate();
 
     function handleSubmitOtpEmail(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const otpEmailValue = (e.target as HTMLFormElement)['otpEmail'].value;
-        validateOtpEmail(email, otpEmailValue, profil, nomPack)
+        validateOtpEmail(email, otpEmailValue, profil, nomPack, selectedAccount, selectedOptions, selectedCards, isReceptionActivated, selectedOptions2)
                 .then(data => { 
                     if(data.statusOtp === StatusOtp.VALID) {
                         let idClient: number = data.idClient;

@@ -1,3 +1,5 @@
+import { List } from 'immutable';
+
 const API_BASE_URL = 'http://localhost:7777/agd';
 
 
@@ -17,11 +19,11 @@ export async function generateOtpEmail(email: string) {
 }
 
 
-export async function validateOtpEmail(email: string, otpEmail: string, profil: string, nomPack: string) {
+export async function validateOtpEmail(email: string, otpEmail: string, profil: string, nomPack: string, selectedAccount: string|null, selectedOptions: List<string>|null, selectedCards: List<string>|null, isReceptionActivated: List<boolean>|null, selectedOptions2: List<string>|null) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, userInput: otpEmail, profil: profil, nomPack: nomPack })
+        body: JSON.stringify({ email: email, userInput: otpEmail, profil: profil, nomPack: nomPack, typePack: selectedAccount, offres: selectedOptions, nomCarte: selectedCards, sendCarte: isReceptionActivated, services: selectedOptions2 })
     };
     const response = await fetch(`${API_BASE_URL}/security-service/otp_email/compare`, requestOptions);
     if (!response.ok) {
