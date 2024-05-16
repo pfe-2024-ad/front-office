@@ -2,16 +2,36 @@ import './ConfirmationFormulaire.css';
 import { useGlobalState } from '../../GlobalState';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-import {useState, ChangeEvent, FormEvent} from 'react';
+import {useState, ChangeEvent, FormEvent, useEffect} from 'react';
 import { submitConfirmationStep } from '../../../../../ApiService';
 import SaveInfoClientStatus from '../../../../../enums/SaveInfoClientStatus';
 import NotificationModal from '../../../notification-modal/NotificationModal'
+import { getClient } from '../../../../../ApiService';
+import PackName from '../../../../../enums/PackName';
+
+
+interface typeDonnees {
+    nom: string|undefined;
+    prenom: string|undefined ;
+    dateNaissance: string|undefined;
+    cin: string|undefined ;
+    adresseResidence: string|undefined;
+    ville: string|undefined;
+    email: string|undefined;
+    tel: string|undefined; 
+    pack: PackName|undefined;
+    adressAgence: string|undefined;
+}
 
 function ConfirmationFormulaire(){
 
-    const { responseGlobal, setResponseGlobal, numPhone } = useGlobalState();
 
     let navigate = useNavigate();
+
+    const [donneesClient, setDonneesClient] = useState<typeDonnees>
+        ({ nom: '', prenom: '', dateNaissance: '', cin: '', adresseResidence: '', ville: '',
+            email: '', tel: '', pack: undefined, adressAgence: ''
+        });
 
 
     const [show, setShow] = useState(false);
@@ -26,6 +46,27 @@ function ConfirmationFormulaire(){
       setMobilite(event.target.value);
     };
 
+    useEffect(() => {
+        getClient()
+            .then(data =>{
+                setDonneesClient({
+                    nom: data.nom,
+                    prenom: data.prenom,
+                    dateNaissance: data.dateNaissance,
+                    cin: data.cin ,
+                    adresseResidence: data.adresseResidence,
+                    ville: data.ville,
+                    email: data.email ,
+                    tel: data.phone,
+                    pack: data.pack,
+                    adressAgence: data.agence
+                });
+            })
+            .catch(error => console.error(error));
+    }, []);
+    
+    
+
 
     
     function handleSubmitFormUpdate(e: FormEvent<HTMLFormElement>) {
@@ -39,13 +80,17 @@ function ConfirmationFormulaire(){
         const postalValue: string = (e.target as HTMLFormElement)['postal'].value;
         const villeValue: string = (e.target as HTMLFormElement)['ville'].value;
 
-        setResponseGlobal({
+        setDonneesClient({
             nom: nomValue,
             prenom: prenomValue,
             dateNaissance: naissanceValue,
             cin: cinValue,
             adresseResidence: adresseValue,
-            ville: villeValue
+            ville: villeValue,
+            tel: undefined,
+            email: undefined,
+            pack: undefined,
+            adressAgence: undefined
         });
         submitConfirmationStep(nomValue, prenomValue, naissanceValue, cinValue, adresseValue, villeValue, professionValue, postalValue, mobilite!)
             .then(data => {
@@ -72,13 +117,13 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="prenom">Prénom</label>
                            <br />
-                           <input className='input-form-update' type='text' name='prenom' defaultValue={responseGlobal.prenom} required/>
+                           <input className='input-form-update' type='text' name='prenom' defaultValue={donneesClient.prenom} required/>
                            <br />
                         </div>
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="nom">Nom</label>
                            <br />
-                           <input className='input-form-update' type='text' name='nom' defaultValue={responseGlobal.nom} required/>
+                           <input className='input-form-update' type='text' name='nom' defaultValue={donneesClient.nom} required/>
                            <br />
                         </div>
                     </div>
@@ -86,13 +131,13 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="naissance">Date de naissance</label>
                            <br />
-                           <input className='input-form-update' type='text' name='naissance' defaultValue={responseGlobal.dateNaissance} required/>
+                           <input className='input-form-update' type='text' name='naissance' defaultValue={donneesClient.dateNaissance} required/>
                            <br />
                         </div>
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="tel">Numéro de téléphone</label>
                            <br />
-                           <input className='input-form-update' type='text' name='tel' value={numPhone} readOnly required/>
+                           <input className='input-form-update' type='text' name='tel' value={donneesClient.tel} readOnly required/>
                            <br />
                         </div>
                     </div>
@@ -100,7 +145,7 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="cin">CIN</label>
                            <br />
-                           <input className='input-form-update' type='text' name='cin' defaultValue={responseGlobal.cin} required/>
+                           <input className='input-form-update' type='text' name='cin' defaultValue={donneesClient.cin} required/>
                            <br />
                         </div>
                         <div style={{width:"50%"}}>
@@ -114,7 +159,7 @@ function ConfirmationFormulaire(){
                         <div style={{width:"50%"}}>
                            <label className='label-form-update' id="adresse">Adresse de résidence</label>
                            <br />
-                           <input className='input-form-update' type='text' name='adresse' defaultValue={responseGlobal.adresseResidence} required/>
+                           <input className='input-form-update' type='text' name='adresse' defaultValue={donneesClient.adresseResidence} required/>
                            <br />
                         </div >
                         <div style={{width:"50%"}}>

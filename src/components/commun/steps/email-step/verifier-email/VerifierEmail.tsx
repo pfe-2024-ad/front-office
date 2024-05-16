@@ -28,8 +28,6 @@ function VerifierEmail({ email }: VerifierEmailProps) {
     const [modalColor, setModalColor] = useState<string>();
 
 
-    const {setEmail} = useGlobalState();
-
     const [showSaisirEmail, setShowSaisirEmail] = useState<boolean>(false);
 
     // Récupérer les données depuis sessionStorage
@@ -72,7 +70,6 @@ function VerifierEmail({ email }: VerifierEmailProps) {
                 .then(data => { 
                     if(data.statusOtp === StatusOtp.VALID) {
                         let idClient: number = data.idClient;
-                        setEmail(email);
                         localStorage.setItem('idClient', idClient.toString())
                         localStorage.setItem('jwtToken', data.jwtToken)
                         navigate("/verification-phone");

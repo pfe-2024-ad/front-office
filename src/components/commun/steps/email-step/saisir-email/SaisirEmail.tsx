@@ -33,7 +33,7 @@ function SaisirEmail() {
         setEmail(emailValue);
         generateOtpEmail(emailValue)
                 .then(data => {
-                    if(data === OtpGenerationStatus.SUCCESS) {
+                    if(data === OtpGenerationStatus.SUCCESS || data === OtpGenerationStatus.EMAIL_ERROR) {
                         setResponse(data);
                         SetMssgModalNotification("Un email de confirmation vous a été envoye sur votre boîte. Veuillez saisir le code recu pour valider la création de votre espace personnel");
                         setModalColor("#0cf569")

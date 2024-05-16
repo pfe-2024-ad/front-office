@@ -165,4 +165,26 @@ export async function saisirAgencyStep(villeAgence: string, adresseAgence: strin
 
 }
 
+export async function getClient(){
+    let jwtToken: string = getJwtTokenFromStorage();
+    let idClient: number = getidclinetFromStorage();
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({ idClient: idClient})
+
+    };
+    const response = await fetch(`${API_BASE_URL}/client-service/api/get-client`, requestOptions);
+
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de submitConfirmationStep');
+    }
+
+    return await response.json();
+
+}
+
 

@@ -33,7 +33,7 @@ function ModalUpload({show, onHide, cinUpload}: ModalUploadProps) {
       if (e.target.files && e.target.files[0] ) {
         setFileObject(e.target.files[0]); // Store File object for further processing
         setFile(URL.createObjectURL(e.target.files[0])); // Store URL for display
-
+        e.target.value = ''
       }
     }
 
