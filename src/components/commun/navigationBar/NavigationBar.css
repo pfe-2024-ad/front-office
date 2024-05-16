@@ -12,7 +12,7 @@
 
 
 .navbar-nav1 {
-    padding-left: 80%;
+    padding-left: 70%;
 }
 .nav-item1 {
     padding-right: 2em;
@@ -26,6 +26,23 @@
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.00938em;
+}
+
+.nav-lien2 {
+    color: #004C7A;
+    text-transform: none;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+}
+
+.nav-lien3{
+    width: 500px;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
 }
 
 

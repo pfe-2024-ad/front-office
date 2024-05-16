@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./SelectionCarte.css";
+import CarteName from "../../../../../enums/CarteName";
 
 interface Props_cartt {
   onNextStep: () => void;
@@ -7,10 +8,10 @@ interface Props_cartt {
 }
 
 const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
-  const [selectedCards, setSelectedCards] = React.useState<string[]>([]);
+  const [selectedCards, setSelectedCards] = React.useState<CarteName[]>([]);
   const [isReceptionActivated, setIsReceptionActivated] = React.useState<boolean[]>([]);
 
-  const handleCardCheckboxChange = (cardName: string) => {
+  const handleCardCheckboxChange = (cardName: CarteName) => {
     const updatedSelectedCards = [...selectedCards];
     const cardIndex = updatedSelectedCards.indexOf(cardName);
     if (cardIndex === -1) {
@@ -60,14 +61,14 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                 type="checkbox"
                 name="card1"
                 value="option1"
-                checked={selectedCards.includes("FIRST")}
-                onChange={() => handleCardCheckboxChange("FIRST")}
+                checked={selectedCards.includes(CarteName.FIRST)}
+                onChange={() => handleCardCheckboxChange(CarteName.FIRST)}
               />
             </span>
             <span>
               <h6 className="h6_mre_select">Carte First</h6>
               <p className="p_mre_select">300 Dhs HT la 1ère année, puis 600 Dhs HT/an</p>
-              {selectedCards.includes("FIRST") && (
+              {selectedCards.includes(CarteName.FIRST) && (
                 <div className="form-check form-switch flex">
                   <span>
                     <input
@@ -75,8 +76,8 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                       type="checkbox"
                       name="option1"
                       value="Reception1"
-                      checked={isReceptionActivated[selectedCards.indexOf("FIRST")]}
-                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf("FIRST"))}
+                      checked={isReceptionActivated[selectedCards.indexOf(CarteName.FIRST)]}
+                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf(CarteName.FIRST))}
                     />
                   </span>
                   <span>
@@ -95,14 +96,14 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                 type="checkbox"
                 name="card2"
                 value="option2"
-                checked={selectedCards.includes("FAMILY")}
-                onChange={() => handleCardCheckboxChange("FAMILY")}
+                checked={selectedCards.includes(CarteName.FAMILY)}
+                onChange={() => handleCardCheckboxChange(CarteName.FAMILY)}
               />
             </span>
             <span>
               <h6 className="h6_mre_select">Carte Family</h6>
               <p className="p_mre_select">100 Dhs HT, valable 2 ans</p>
-              {selectedCards.includes("FAMILY") && (
+              {selectedCards.includes(CarteName.FAMILY) && (
                 <div className="form-check form-switch flex">
                   <span>
                     <input
@@ -110,8 +111,8 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                       type="checkbox"
                       name="option2"
                       value="Reception2"
-                      checked={isReceptionActivated[selectedCards.indexOf("FAMILY")]}
-                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf("FAMILY"))}
+                      checked={isReceptionActivated[selectedCards.indexOf(CarteName.FAMILY)]}
+                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf(CarteName.FAMILY))}
                     />
                   </span>
                   <span>
@@ -130,14 +131,14 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                 type="checkbox"
                 name="card3"
                 value="option3"
-                checked={selectedCards.includes("BLEU_NATIONAL")}
-                onChange={() => handleCardCheckboxChange("BLEU_NATIONAL")}
+                checked={selectedCards.includes(CarteName.BLEU_NATIONAL)}
+                onChange={() => handleCardCheckboxChange(CarteName.BLEU_NATIONAL)}
               />
             </span>
             <span>
               <h6 className="h6_mre_select">Carte Blue Nationale</h6>
               <p className="p_mre_select">50 Dhs HT la 1ère année, puis 100 Dhs HT/an</p>
-              {selectedCards.includes("BLEU_NATIONAL") && (
+              {selectedCards.includes(CarteName.BLEU_NATIONAL) && (
                 <div className="form-check form-switch flex">
                   <span>
                     <input
@@ -145,8 +146,8 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                       type="checkbox"
                       name="option3"
                       value="Reception3"
-                      checked={isReceptionActivated[selectedCards.indexOf("BLEU_NATIONAL")]}
-                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf("BLEU_NATIONAL"))}
+                      checked={isReceptionActivated[selectedCards.indexOf(CarteName.BLEU_NATIONAL)]}
+                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf(CarteName.BLEU_NATIONAL))}
                     />
                   </span>
                   <span>
@@ -165,14 +166,14 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                 type="checkbox"
                 name="card4"
                 value="option4"
-                checked={selectedCards.includes("BLEU_INTERNATIONAL")}
-                onChange={() => handleCardCheckboxChange("BLEU_INTERNATIONAL")}
+                checked={selectedCards.includes(CarteName.BLEU_INTERNATIONAL)}
+                onChange={() => handleCardCheckboxChange(CarteName.BLEU_INTERNATIONAL)}
               />
             </span>
             <span>
               <h6 className="h6_mre_select">Carte Blue Internationale</h6>
               <p className="p_mre_select">55 Dhs HT la 1ère année, puis 110 Dhs HT/an</p>
-              {selectedCards.includes("BLEU_INTERNATIONAL") && (
+              {selectedCards.includes(CarteName.BLEU_INTERNATIONAL) && (
                 <div className="form-check form-switch flex">
                   <span>
                     <input
@@ -180,8 +181,8 @@ const Select_Ct: React.FC<Props_cartt> = ({ onNextStep, onPrevStep }) => {
                       type="checkbox"
                       name="option4"
                       value="Reception4"
-                      checked={isReceptionActivated[selectedCards.indexOf("BLEU_INTERNATIONAL")]}
-                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf("BLEU_INTERNATIONAL"))}
+                      checked={isReceptionActivated[selectedCards.indexOf(CarteName.BLEU_INTERNATIONAL)]}
+                      onChange={() => handleReceptionCheckboxChange(selectedCards.indexOf(CarteName.BLEU_INTERNATIONAL))}
                     />
                   </span>
                   <span>

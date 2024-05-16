@@ -1,4 +1,5 @@
 import { List } from 'immutable';
+import StepClient from './enums/StepClient';
 
 const API_BASE_URL = 'http://localhost:7777/agd';
 
@@ -124,13 +125,15 @@ export async function submitOcrStep(file1: File, file2: File, file3: File){
 export async function submitConfirmationStep(nom: string, prenom: string, dateNaissance: string, cin: string, adresseResidence: string, ville: string, profession: string,codePostal: string, mobiliteBancaire: string){
     let jwtToken: string = getJwtTokenFromStorage();
     let idClient: number = getidclinetFromStorage();
+
+    let step: StepClient = StepClient.VERIFICATION_STEP 
     
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
         'Authorization': 'Bearer '+jwtToken 
         },
-        body: JSON.stringify({ idClient: idClient, nom: nom, prenom: prenom, dateNaissance: dateNaissance, cin: cin, adresseResidence: adresseResidence, ville: ville, profession: profession,codePostal: codePostal, mobiliteBancaire: mobiliteBancaire})
+        body: JSON.stringify({ idClient: idClient, nom: nom, prenom: prenom, dateNaissance: dateNaissance, cin: cin, adresseResidence: adresseResidence, ville: ville, profession: profession,codePostal: codePostal, mobiliteBancaire: mobiliteBancaire, step: step})
 
     };
     const response = await fetch(`${API_BASE_URL}/client-service/api/add-client-information`, requestOptions);
@@ -185,6 +188,52 @@ export async function getClient(){
 
     return await response.json();
 
+}
+
+export async function generateOtpEmailLogin(email: string) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })    };
+
+    const response = await fetch(`${API_BASE_URL}/security-service/otp_email/login/generate`, requestOptions);
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de generate email');
+    }
+
+    return await response.text();
+}
+
+export async function validateOtpEmailLogin(email: string, otpEmail: string) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, userInput: otpEmail})
+    };
+    const response = await fetch(`${API_BASE_URL}/security-service/otp_email/login/compare`, requestOptions);
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de generate email');
+    }
+
+    return await response.json();
+}
+
+export async function SetNewStep(step: StepClient){
+
+    let jwtToken: string = getJwtTokenFromStorage();
+    let idClient: number = getidclinetFromStorage();
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({ idClient: idClient, step: step})
+    };
+    const response = await fetch(`${API_BASE_URL}/client-service/api/set-client-step`, requestOptions);
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de generate email');
+    }
 }
 
 

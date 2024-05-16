@@ -4,6 +4,7 @@ import mre from "../../../assets/mre-img.png";
 import { useState } from 'react'
 import './Mre.css'
 import MreForm from "./choisir-offre/ChoisirOffre"
+import PackName from "../../../enums/PackName";
 
 function Mre() {
 
@@ -30,14 +31,14 @@ function Mre() {
                 packElemStyle={{backgroundColor: "rgb(33, 129, 209)"}}
                 packTitleStyle={{color: "#ffffff"}}
                 lienTo ="/MRE-ouvrir-un-compte-bancaire-au-maroc" 
-                valueNomPack="BLEU"
+                valueNomPack={PackName.BLEU}
                 onClick={() => handlePackClick("Pack Blue")}
             />
             <CardPack packName="Pack First" 
                 packElemStyle={{backgroundColor: "rgb(19, 26, 30)"}}
                 packTitleStyle={{color: "#ffffff"}}
                 lienTo ="/MRE-ouvrir-un-compte-bancaire-au-maroc" 
-                valueNomPack="FIRST"
+                valueNomPack={PackName.FIRST}
                 onClick={() => handlePackClick("Pack Blue")}
             />
         </div>

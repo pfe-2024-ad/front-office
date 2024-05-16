@@ -1,6 +1,7 @@
 import CardProfil from "./card-profil/CardProfil";
 import CardPack from "./card-pack/CardPack";
 import particulier from "../../../assets/particulier-img.png"
+import PackName from "../../../enums/PackName";
 
 
 function Particulier() {
@@ -16,19 +17,19 @@ function Particulier() {
             packElemStyle={{backgroundColor: "rgb(1, 41, 83)"}}
             packTitleStyle={{color: "#ffffff"}}
             lienTo ="/verification-email" 
-            valueNomPack="AZUR"
+            valueNomPack={PackName.AZUR}
         />
         <CardPack packName="Pack Gold" 
             packElemStyle={{backgroundColor: "rgb(201, 160, 43)"}}
             packTitleStyle={{color: "#ffffff"}}
             lienTo ="/verification-email" 
-            valueNomPack="GOLD"
+            valueNomPack={PackName.GOLD}
         />
         <CardPack packName="Pack Platinum" 
             packElemStyle={{backgroundColor: "rgb(140, 141, 144)"}}
             packTitleStyle={{color: "#003D7C"}}
             lienTo ="/verification-email" 
-            valueNomPack="PLATINUM"
+            valueNomPack={PackName.PLATINUM}
         />
         </div>
     </div>
