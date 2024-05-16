@@ -1,6 +1,7 @@
 import CardProfil from "./card-profil/CardProfil";
 import CardPack from "./card-pack/CardPack";
 import professionnel from "../../../assets/professionnel-img.png"
+import PackName from "../../../enums/PackName";
 
 
 
@@ -17,31 +18,31 @@ function Professionnel() {
                 packElemStyle={{backgroundColor: "rgb(117, 202, 252)"}}
                 packTitleStyle={{color: "#003D7C"}}
                 lienTo ="/verification-email" 
-                valueNomPack="ESSENTIEL"
+                valueNomPack={PackName.ESSENTIEL}
             />
             <CardPack packName="Pack Auto-Entrepreneur" 
                 packElemStyle={{backgroundColor: "rgb(1, 41, 83)"}}
                 packTitleStyle={{color: "#FFFFFF"}}
                 lienTo ="/verification-email" 
-                valueNomPack="AUTO_ENTREPRENEUR"
+                valueNomPack={PackName.AUTO_ENTREPRENEUR}
             />
             <CardPack packName="Pack Classic" 
                 packElemStyle={{backgroundColor: "rgb(117, 202, 252)"}}
                 packTitleStyle={{color: "#003D7C"}}
                 lienTo ="/verification-email" 
-                valueNomPack="CLASSIC"
+                valueNomPack={PackName.CLASSIC}
             />
             <CardPack packName="Pack Gold" 
                 packElemStyle={{backgroundColor: "rgb(201, 160, 43)", marginBottom: "5%"}}
                 packTitleStyle={{color: "#FFFFFF"}}
                 lienTo ="/verification-email" 
-                valueNomPack="GOLD"
+                valueNomPack={PackName.GOLD}
             />
             <CardPack packName="Pack Platinum" 
                 packElemStyle={{backgroundColor: "rgb(140, 141, 144)", marginBottom: "5%"}}
                 packTitleStyle={{color: "#003D7C"}}
                 lienTo ="/verification-email" 
-                valueNomPack="PLATINUM"
+                valueNomPack={PackName.PLATINUM}
             />
         </div>
         </div>

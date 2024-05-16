@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AdosserPack.css";
+import PackType from "../../../../../enums/PackType";
+import PackName from "../../../../../enums/PackName";
 
 interface AdosserCtProps {
   onNextStep: () => void;
@@ -33,8 +35,7 @@ const Adosser_Ct: React.FC<AdosserCtProps> = ({ onNextStep }) => {
     // Stocker le compte sélectionné dans sessionStorage
     if(selectedValue === "Cpt_unitaire"){
       sessionStorage.removeItem("selectedAccount");
-      sessionStorage.removeItem("nomPack");
-      
+      sessionStorage.setItem("nomPack", PackName.AUCUN);      
     }
     else {
       sessionStorage.setItem("nomPack", packName);
@@ -122,7 +123,7 @@ const Adosser_Ct: React.FC<AdosserCtProps> = ({ onNextStep }) => {
                 <input
                   type="radio"
                   name="vertical"
-                  value="CHEQUE_DH"
+                  value={PackType.CHEQUE_DH}
                   onChange={handleAccountSelection}
                 />
                 Compte chèque en Dhs
@@ -133,7 +134,7 @@ const Adosser_Ct: React.FC<AdosserCtProps> = ({ onNextStep }) => {
                 <input
                   type="radio"
                   name="vertical"
-                  value="DHS_CONV"
+                  value={PackType.DHS_CONV}
                   onChange={handleAccountSelection}
                 />
                 Compte chèque en Dhs convertibles

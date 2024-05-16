@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './SelectionService.css'
+import Services from '../../../../../enums/Services';
 
 interface Props_prodServ {
     ToLink: () => void;
@@ -9,7 +10,7 @@ interface Props_prodServ {
 const Prod_Service: React.FC<Props_prodServ> = ({ ToLink, onPrevStep }) => {
     const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
 
-    const handleCardCheckboxChange = (optionName: string) => {
+    const handleCardCheckboxChange = (optionName: Services) => {
         setSelectedOptions(prevOptions => {
             if (prevOptions.includes(optionName)) {
                 return prevOptions.filter(option => option !== optionName); // Désélectionner la carte si elle est déjà sélectionnée
@@ -40,7 +41,7 @@ const Prod_Service: React.FC<Props_prodServ> = ({ ToLink, onPrevStep }) => {
                             type="checkbox"
                             name="card1"
                             value="option1"
-                            onChange={() => handleCardCheckboxChange("CARNET")}
+                            onChange={() => handleCardCheckboxChange(Services.CARNET)}
                         />
                     </span>
                     <span>
@@ -54,7 +55,7 @@ const Prod_Service: React.FC<Props_prodServ> = ({ ToLink, onPrevStep }) => {
                             type="checkbox"
                             name="card2"
                             value="option2"
-                            onChange={() => handleCardCheckboxChange("SALAMA")}
+                            onChange={() => handleCardCheckboxChange(Services.SALAMA)}
                         />
                     </span>
                     <span>
@@ -68,7 +69,7 @@ const Prod_Service: React.FC<Props_prodServ> = ({ ToLink, onPrevStep }) => {
                             type="checkbox"
                             name="card3"
                             value="option3"
-                            onChange={() => handleCardCheckboxChange("DABA_TRANSFER")}
+                            onChange={() => handleCardCheckboxChange(Services.DABA_TRANSFER)}
                         />
                     </span>
                     <span>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./SelectionCompte.css";
+import PackOffres from "../../../../../enums/PackOffres";
 
 interface Props_cpt {
   onNextStep: () => void;
@@ -45,7 +46,7 @@ const Select_Cpt: React.FC<Props_cpt> = ({ onNextStep, onPrevStep }) => {
       <div className="Triplette_mre">
         <div className="card1_mre">
           <span>
-            <input type="checkbox" name="card1" value="CHEQUE_DH" onChange={handleCheckboxChange} />
+            <input type="checkbox" name="card1" value={PackOffres.CHEQUE_DH} onChange={handleCheckboxChange} />
           </span>
           <span>
             <h6 className="h6_mre_selct">Compte chèque en Dhs – 0 Dhs pendant 6 mois</h6>
@@ -54,7 +55,7 @@ const Select_Cpt: React.FC<Props_cpt> = ({ onNextStep, onPrevStep }) => {
         </div>
         <div className="card2_mre">
           <span>
-            <input type="checkbox" name="card2" value="DHS_CONV" onChange={handleCheckboxChange} />
+            <input type="checkbox" name="card2" value={PackOffres.DHS_CONV} onChange={handleCheckboxChange} />
           </span>
           <span>
             <h6 className="h6_mre_selct">Compte chèque en Dhs convertible – 0 Dhs pendant 6 mois</h6>
@@ -63,7 +64,7 @@ const Select_Cpt: React.FC<Props_cpt> = ({ onNextStep, onPrevStep }) => {
         </div>
         <div className="card3_mre">
           <span>
-            <input type="checkbox" name="card3" value="DEVISES" onChange={handleCheckboxChange} />
+            <input type="checkbox" name="card3" value={PackOffres.DEVISES} onChange={handleCheckboxChange} />
           </span>
           <span>
             <h6 className="h6_mre_selct">Compte en devises – 0 Dhs*</h6>

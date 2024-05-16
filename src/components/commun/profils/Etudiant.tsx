@@ -1,6 +1,7 @@
 import CardProfil from "./card-profil/CardProfil";
 import CardPack from "./card-pack/CardPack";
 import etudiant from '../../../assets/etudiant-img.png';
+import PackName from "../../../enums/PackName";
 
 function Etudiant() {
     return <div className='ouvrir-compte-root'>
@@ -13,7 +14,7 @@ function Etudiant() {
                 packElemStyle={{backgroundColor: "rgb(15, 82, 151)", marginLeft: "10%"}}
                 packTitleStyle={{color: "#ffffff"}}
                 lienTo ="/verification-email" 
-                valueNomPack="JEUNE_CAMPUS"
+                valueNomPack={PackName.JEUNE_CAMPUS}
             />
         </div>
         </div>

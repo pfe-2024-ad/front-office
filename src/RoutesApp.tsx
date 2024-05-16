@@ -11,12 +11,14 @@ import OcrStep from './components/commun/steps/ocr-step/OcrStep'
 import ConfirmationStep from './components/commun/steps/confirmation-step/ConfirmationStep'
 import AgencyStep from './components/commun/steps/agency-step/AgencyStep'
 import RecapStep from './components/commun/steps/recap-step/RecapStep'
+import MaDemande from './components/commun/ma-demande/MaDemande'
 
 function RoutesApp() {
     return(
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Contact" element={<Contact/>} />
+            <Route path="/Ma-demande" element={<MaDemande />} />
             <Route path="/particulier-ouvrir-un-compte-bancaire-en-ligne" element={<Particulier />} />
             <Route path="/MRE-ouvrir-un-compte-bancaire-au-maroc" element={<Mre />} />
             <Route path="/compte-bancaire-en-ligne-pour-etudiant" element={<Etudiant />} />
