@@ -12,6 +12,8 @@ import ConfirmationStep from './components/commun/steps/confirmation-step/Confir
 import AgencyStep from './components/commun/steps/agency-step/AgencyStep'
 import RecapStep from './components/commun/steps/recap-step/RecapStep'
 import MaDemande from './components/commun/ma-demande/MaDemande'
+import PaymentStep from './components/commun/steps/payment-step/PaymentStep'
+import RdvStep from './components/commun/steps/rdv-step/RdvStep'
 
 function RoutesApp() {
     return(
@@ -29,6 +31,8 @@ function RoutesApp() {
             <Route path="/verification-donnees" element={<ConfirmationStep />} />
             <Route path="/choisir-agence" element={<AgencyStep />} />
             <Route path="/recap-donnees" element={<RecapStep />} />
+            <Route path="/effectuer-paiement" element={<PaymentStep />} />
+            <Route path="/prendre-rdv" element={<RdvStep />} />
         </Routes>
     )
 }

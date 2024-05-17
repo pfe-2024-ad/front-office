@@ -236,4 +236,29 @@ export async function SetNewStep(step: StepClient){
     }
 }
 
+export async function EffectuerPayment(amount: number){
+    let jwtToken: string = getJwtTokenFromStorage();
+    let idClient: number = getidclinetFromStorage();
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({ idClient: idClient, amount: amount})
+
+    };
+    const response = await fetch(`${API_BASE_URL}/payment-service/payment/new`, requestOptions);
+
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de saisir agency step');
+    }
+
+    return await response.text();
+
+}
+
+
+
+
 
