@@ -55,6 +55,10 @@ function VerificationDemande({ email }: VerifierEmailProps) {
                             navigate("/choisir-agence"); 
                         } else if(data.step === StepClient.AGENCY_STEP){
                             navigate("/recap-donnees"); 
+                        } else if(data.step === StepClient.RECAP_STEP){
+                            navigate("/effectuer-paiement"); 
+                        } else if(data.step === StepClient.PAYMENT_STEP){
+                            navigate("/prendre-rdv"); 
                         } 
                     } else if( data.statusOtp === StatusOtp.INVALID || data.statusOtp === StatusOtp.TIMEOUT) {
                         SetMssgModalNotification("Le code saisie n'est pas correct, veuillez saisir le bon code")

@@ -1,8 +1,11 @@
 import './RecapFormulaire.css';
-import { useGlobalState } from '../../GlobalState';
 import {useState, useEffect} from 'react';
 import { getClient } from '../../../../../ApiService';
 import PackName from '../../../../../enums/PackName';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+import StepClient from '../../../../../enums/StepClient';
+import { SetNewStep } from '../../../../../ApiService';
 
 
 interface typeDonnees {
@@ -23,6 +26,14 @@ function RecapFormulaire(){
     ({ nom: '', prenom: '', dateNaissance: '', cin: '', adresseResidence: '', ville: '',
         email: '', tel: '', pack: undefined, adressAgence: ''
     });
+
+    let navigate = useNavigate();
+
+    function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+      e.preventDefault();
+      SetNewStep(StepClient.RECAP_STEP);
+      navigate("/effectuer-paiement");
+   }
 
 
     useEffect(() => {
@@ -123,6 +134,7 @@ function RecapFormulaire(){
                         </div>
                     </div>
                 </div>
+                <Button className='button-suivre' type='submit' onClick={handleClick}>Valider</Button>
             </form>
         </div>
     )
