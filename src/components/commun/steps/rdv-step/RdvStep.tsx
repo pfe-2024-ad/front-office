@@ -17,7 +17,7 @@ function RdvStep() {
                 <StepContainer styleFleche={{backgroundColor: "#2EBC34"}} imgFleche={hautFleche} containerTitle={"Ma demande"}>
                 </StepContainer>
 
-                <StepContainer styleFleche={{backgroundColor: "#2EBC34"}} imgFleche={basFleche} containerTitle={"Mon dépôt (Optionnel)"}>
+                <StepContainer styleFleche={{backgroundColor: "#2EBC34"}} imgFleche={hautFleche} containerTitle={"Mon dépôt (Optionnel)"}>
                 </StepContainer>
 
                 <StepContainer styleFleche={{backgroundColor: "#3399FE"}} imgFleche={basFleche} containerTitle={"Mon rendez-vous visioconférence"}>

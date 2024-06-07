@@ -3,7 +3,6 @@ import './SaisirAgence.css';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import { saisirAgencyStep } from '../../../../../ApiService';
-import { useGlobalState } from '../../GlobalState';
 import SaveInfoClientStatus from '../../../../../enums/SaveInfoClientStatus';
 import NotificationModal from '../../../notification-modal/NotificationModal';
 

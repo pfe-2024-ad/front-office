@@ -2,6 +2,7 @@ import './EffectuePayment.css';
 import {FormEvent, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import { EffectuerPayment } from '../../../../../ApiService';
+import { AnnulerPayment } from '../../../../../ApiService';
 import NotificationModal from '../../../notification-modal/NotificationModal';
 import Button from 'react-bootstrap/Button';
 import PaymentStatus from '../../../../../enums/PaymentStatus';
@@ -30,10 +31,10 @@ function EffectuePayment() {
                         SetMssgModalNotification("Votre paiement a été effectué avec succès. Merci de votre confiance")
                         setModalColor("#0cf569")
                         handleShow();
-                        // Attendre 5 secondes avant de naviguer vers une autre page
+                        // Attendre 1s vant de naviguer vers une autre page
                         setTimeout(() => {
                             navigate("/prendre-rdv");
-                        }, 5000); // 5000 millisecondes = 5 secondes
+                        }, 1000); // 1000 millisecondes = 1 secondes
                     } else if( data === PaymentStatus.AMOUNT_NOT_ACCEPTED) {
                         SetMssgModalNotification("Le montant saisi n'est pas accepté, veuillez saisir un montant entre 100 et 5000")
                         setModalColor("rgb(251 0 46)")
@@ -52,6 +53,7 @@ function EffectuePayment() {
     }
 
     function PasserEtapePayment(){
+        AnnulerPayment();
         navigate("/prendre-rdv");
     }
 

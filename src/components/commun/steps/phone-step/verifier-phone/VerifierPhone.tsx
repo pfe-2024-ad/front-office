@@ -1,9 +1,8 @@
 import './VerifierPhone.css'
 import SaisirPhone from '../saisir-phone/SaisirPhone';
-import {useState, useEffect, FormEvent} from 'react';
+import {useState, FormEvent} from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-import { useGlobalState } from '../../GlobalState';
 
 import { validateOtpPhone } from '../../../../../ApiService';
 import StatusOtp from '../../../../../enums/StatusOtp';

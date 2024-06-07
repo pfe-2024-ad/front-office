@@ -14,6 +14,7 @@ import RecapStep from './components/commun/steps/recap-step/RecapStep'
 import MaDemande from './components/commun/ma-demande/MaDemande'
 import PaymentStep from './components/commun/steps/payment-step/PaymentStep'
 import RdvStep from './components/commun/steps/rdv-step/RdvStep'
+import MySpaceStep from './components/commun/steps/my-space-step/MySpaceStep'
 
 function RoutesApp() {
     return(
@@ -33,6 +34,7 @@ function RoutesApp() {
             <Route path="/recap-donnees" element={<RecapStep />} />
             <Route path="/effectuer-paiement" element={<PaymentStep />} />
             <Route path="/prendre-rdv" element={<RdvStep />} />
+            <Route path="/my-space" element={<MySpaceStep />} />
         </Routes>
     )
 }
