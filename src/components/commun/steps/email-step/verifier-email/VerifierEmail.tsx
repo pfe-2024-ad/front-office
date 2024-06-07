@@ -1,8 +1,7 @@
 import './VerifierEmail.css'
 import Button from 'react-bootstrap/Button';
-import {useState, useEffect, FormEvent} from 'react'
+import {useState, FormEvent} from 'react'
 import { useNavigate } from "react-router-dom";
-import { useGlobalState } from '../../GlobalState';
 import { validateOtpEmail } from '../../../../../ApiService';
 import StatusOtp from '../../../../../enums/StatusOtp'
 import NotificationModal from '../../../../commun/notification-modal/NotificationModal'
