@@ -1,0 +1,72 @@
+.container-Termsacccep {
+  height: 100vh;
+  font-size: 14px;
+  width: 70%;
+  margin: 0 auto;
+  padding: 40px;
+  position: relative;
+  top: 200px;
+  margin-bottom: 0;
+  font-family: Arial, sans-serif;
+}
+
+.center-to-the-left {
+  height: 100vh;
+  font-size: 14px;
+  width: 70%;
+  margin: spx auto 0; 
+  margin-bottom: 0;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  text-align: right; 
+  float: right;
+}
+
+.text-Termsacccep {
+  text-align: right;
+  margin-top: 40px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.lu-approuvé-titre-terms {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 14px ;
+  color: grey;
+}
+
+
+
+.lu-approuvé-terms {
+  width: 300px; 
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 0;
+  float: right;
+}
+
+.initials-title-Termsacccep {
+  text-align: right;
+  margin-top: 100px; 
+  margin-bottom: 0;          
+  font-size: 14px;
+  color: #333;
+  padding-top: 20px;
+}
+
+.initials-Termsacccep {
+  width: 300px; 
+  height: 40px; 
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 0;
+  float: right;
+}
+
+

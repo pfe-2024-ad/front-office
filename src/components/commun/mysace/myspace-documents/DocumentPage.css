@@ -1,0 +1,48 @@
+
+.body {
+    padding: 0;
+    margin: 0;
+}
+
+.title-doc-myspace {
+    margin: 0 auto;
+    position: relative;
+    left: 240px;
+    top: 50px;
+}
+
+.welcome-mess-user-myspace {
+    margin: 0 auto;
+}
+
+.welcome-mess-myspace {
+    margin-bottom: 30px;
+    font-size: 18px;
+    position: relative;
+    left: 10px;
+}
+.documentPage-container-x0 {
+    background-color: rgb(221, 217, 217);
+}
+
+.mysace-greeting-client {
+    margin-bottom: 30px;
+}
+
+.sometext-doc-x0 {
+   width: 100vw;
+    margin: 0 auto;
+}
+.empty-space-x0 {
+    background-color: rgb(221, 217, 217);
+    min-height: 20vh;
+  }
+
+  .header-doc-x0 {
+    margin-top: -30px;
+  }
+  .user-document-myspace {
+    position: relative;
+    top: -17px;
+  }
+  
