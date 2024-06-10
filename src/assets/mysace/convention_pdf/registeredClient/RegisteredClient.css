@@ -1,0 +1,73 @@
+.container-conv {
+  margin: 0px auto; /* Adjust margin as needed */
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #fff;
+  width: 600px; /* Adjust the width as needed */
+}
+
+.title-conv {
+  color: #808080;
+  font-size: 14px;
+  margin-top: 35px;
+}
+
+.text1-conv,
+.text2-conv {
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.text2-conv {
+  margin-bottom: 40px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 8px; /* Slightly rounded corners */
+  overflow: hidden; /* To ensure the border-radius applies */
+  border: 1px solid #ADD8E6; /* Light blue border */
+}
+
+th,
+td {
+  padding: 10px;
+  font-size: 14px;
+}
+
+th {
+  background-color: #ADD8E6; /* Light blue background */
+  text-align: center; /* Center the text horizontally */
+  vertical-align: middle; /* Center the text vertically */
+  color: #000; /* Optional: Change text color to black for contrast */
+}
+
+td {
+  display: flex;
+  justify-content: space-between; /* Distribute space between elements */
+}
+
+td span {
+  margin-left: auto; /* Push the span to the right */
+  white-space: nowrap; /* Prevent line break */
+}
+
+.initials-conv {
+  width: 340px;
+  height: 40px; /* Reduced height */
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-top: 10px;
+  float: right; /* Align to the right */
+}
+
+.initials-title-conv {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: right;
+}
+
