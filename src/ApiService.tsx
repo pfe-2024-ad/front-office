@@ -28,7 +28,7 @@ export async function validateOtpEmail(email: string, otpEmail: string, profil: 
     };
     const response = await fetch(`${API_BASE_URL}/security-service/otp_email/compare`, requestOptions);
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de generate email');
+        throw new Error('Erreur lors de la requête POST de validate otp email');
     }
 
     return await response.json();
@@ -74,7 +74,7 @@ export async function generateOtpPhone(keyPhone: string, numPhone: string) {
     };
     const response = await fetch(`${API_BASE_URL}/security-service/otp_phone/generate`, requestOptions);
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de generate email');
+        throw new Error('Erreur lors de la requête POST de generate otp phone');
     }
 
     return await response.text();
@@ -93,7 +93,7 @@ export async function validateOtpPhone(otpPhone: string, keyPhone: string, numPh
     };
     const response = await fetch(`${API_BASE_URL}/security-service/otp_phone/compare`, requestOptions);
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de generate email');
+        throw new Error('Erreur lors de la requête POST de validate otp phone');
     }
 
     return await response.text();
@@ -183,7 +183,7 @@ export async function getClient(){
     const response = await fetch(`${API_BASE_URL}/client-service/api/get-client`, requestOptions);
 
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de submitConfirmationStep');
+        throw new Error('Erreur lors de la requête POST pour get les donnees client');
     }
 
     return await response.json();
@@ -198,7 +198,7 @@ export async function generateOtpEmailLogin(email: string) {
 
     const response = await fetch(`${API_BASE_URL}/security-service/otp_email/login/generate`, requestOptions);
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de generate email');
+        throw new Error('Erreur lors de la requête POST de generate otp email login');
     }
 
     return await response.text();
@@ -212,7 +212,7 @@ export async function validateOtpEmailLogin(email: string, otpEmail: string) {
     };
     const response = await fetch(`${API_BASE_URL}/security-service/otp_email/login/compare`, requestOptions);
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de generate email');
+        throw new Error('Erreur lors de la requête POST pour valider otp email login');
     }
 
     return await response.json();
@@ -232,7 +232,7 @@ export async function SetNewStep(step: StepClient){
     };
     const response = await fetch(`${API_BASE_URL}/client-service/api/set-client-step`, requestOptions);
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de generate email');
+        throw new Error('Erreur lors de la requête POST pour set a new step');
     }
 }
 
@@ -251,11 +251,98 @@ export async function EffectuerPayment(amount: number){
     const response = await fetch(`${API_BASE_URL}/payment-service/payment/new`, requestOptions);
 
     if (!response.ok) {
-        throw new Error('Erreur lors de la requête POST de saisir agency step');
+        throw new Error('Erreur lors de la requête POST pour effectuer le paiemenet');
     }
 
     return await response.text();
 
+}
+
+export async function AnnulerPayment(){
+    let jwtToken: string = getJwtTokenFromStorage();
+    let idClient: number = getidclinetFromStorage();
+    
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({ idClient: idClient})
+
+    };
+    const response = await fetch(`${API_BASE_URL}/payment-service/payment/annuler`, requestOptions);
+
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST pour annuler payment');
+    }
+
+}
+
+export async function createRdv(date: string | null, heure: string | null){
+    let jwtToken: string = getJwtTokenFromStorage();
+    let idClient: number = getidclinetFromStorage(); 
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({ idClient: idClient, date: date, heure: heure})
+    };
+    const response = await fetch(`${API_BASE_URL}/rdv-service/create-rdv`, requestOptions);
+
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de create rdv');
+    }
+}
+
+interface Rdv {
+    date: string;
+    heure: string;
+    rdvStatus: string ;
+}
+export async function getRdvByDate(date: string): Promise<Rdv[]>{
+
+    let jwtToken: string = getJwtTokenFromStorage();
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({date: date})
+    };
+    const response = await fetch(`${API_BASE_URL}/rdv-service/rdv-by-date`, requestOptions);
+
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de get rdv by date');
+    }
+
+    return await response.json();
+}
+
+export async function getNbrAgentDispo(date: string): Promise<number>{
+    
+    let jwtToken: string = getJwtTokenFromStorage();
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+jwtToken 
+        },
+        body: JSON.stringify({dateRdv: date})
+    };
+    const response = await fetch(`${API_BASE_URL}/administrateur-service/api/get-nbr-agent-available`, requestOptions);
+
+    if (!response.ok) {
+        throw new Error('Erreur lors de la requête POST de get nbr agent dispo');
+    }
+
+    const data = await response.text();
+
+    const number = parseInt(data, 10);
+
+    return number;
 }
 
 

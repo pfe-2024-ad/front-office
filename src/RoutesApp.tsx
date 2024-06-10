@@ -1,4 +1,3 @@
-import React from 'react';
 import {Route, Routes, useParams} from 'react-router-dom'
 import Home from './components/home/Home'
 import Contact from './components/commun/contact/Contact'
@@ -18,9 +17,8 @@ import RdvStep from './components/commun/steps/rdv-step/RdvStep'
 import Myspace from './components/commun/mysace/myspace'
 import MyspaceOffre from './components/commun/mysace/myspace-offres/UserOffre/myspaceOffre'
 import DocumentPage from './components/commun/mysace/myspace-documents/DocumentPage'
-import ConventionClient from './components/commun/mysace/convention_pdf/ConventionClient/ConventionClient'
-import CompteService from './components/commun/mysace/myspace-offres/compte-service/CompteService';
-import CompteUnitaireOffre from './components/commun/mysace/myspace-offres/UserOffre/CompteUnitaireOffre';
+
+
 
 
   
@@ -47,6 +45,7 @@ function RoutesApp(  props: { setShowNavBar: any}) {
             <Route path="/recap-donnees" element={<RecapStep />} />
             <Route path="/effectuer-paiement" element={<PaymentStep />} />
             <Route path="/prendre-rdv" element={<RdvStep />} />
+            <Route path="/my-space" element={<Myspace />} />
             <Route path="/my-space-offre" element={<MyspaceOffre/>} />
             <Route path="/my-space-documents" element={<DocumentPage/>} />
             {/* <Route path="/convention"   element={<ConventionClient setShowNavBar={() => {}} />} />  */} 

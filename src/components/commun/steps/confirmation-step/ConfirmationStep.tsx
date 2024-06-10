@@ -13,7 +13,7 @@ function ConfirmationStep() {
             <h2 className="title-creation">Ma demande de création de compte</h2>
             <div className="container-creation">
 
-                <StepContainer styleFleche={{backgroundColor: "#C4C4C4"}} imgFleche={hautFleche} containerTitle={"Vérification des coordonnées"}>
+                <StepContainer styleFleche={{backgroundColor: "#2EBC34"}} imgFleche={hautFleche} containerTitle={"Vérification des coordonnées"}>
                 </StepContainer>
                 
                 <StepContainer styleFleche={{backgroundColor: "#3399FE"}} imgFleche={basFleche} containerTitle={"Ma demande"}>
