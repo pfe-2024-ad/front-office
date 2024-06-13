@@ -1,9 +1,39 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import MyspaceText from "./myspace-text/myspaceText";
 import "./myspace.css";
+import PackName from '../../../enums/PackName';
+import { getClient } from '../../../ApiService';
 
-const myspace: React.FC = () => {
+interface typeDonnees {
+  pack: PackName|undefined;
+}
+
+const Myspace: React.FC = () => {
+  
+  const [donneesClient, setDonneesClient] = useState<typeDonnees>
+  ({ 
+       pack: undefined
+  });
+  
+  useEffect(() => {
+    getClient()
+        .then(data =>{
+            setDonneesClient({
+                pack: data.pack,
+            });
+        })
+        .catch(error => console.error(error));
+}, []);
+
+const navigate = useNavigate();
+
+const handleTerminerClick = () => {
+  
+    navigate('/my-space-offre');
+  
+};
+
   return (
     <div className="homePage-background-myspace">
         <div className="home-container-myspace">
@@ -16,13 +46,13 @@ const myspace: React.FC = () => {
        </p>
       
    
-      <Link to="/my-space-offre">
-      <button className="card-button4-myspace">Terminer</button>
-      </Link>
+    
+      <button className="card-button4-myspace"  onClick={handleTerminerClick}>Terminer</button>
+
       </div>
       <div className="homePage-text-myspace"><MyspaceText/></div>     
     </div> 
   );
 };
 
-export default myspace;
+export default Myspace;

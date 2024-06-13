@@ -1,7 +1,6 @@
 import './ConfirmationStep.css'
 import StepContainer from "../general-container-step/StepContainer";
 import StepContent from "../general-content-step/StepContent";
-
 import basFleche from '../../../../assets/fleche-bas.png';
 import hautFleche from '../../../../assets/fleche-haut.png';
 import ConfirmationFormulaire from './confirmation-formulaire/ConfirmationFormulaire'

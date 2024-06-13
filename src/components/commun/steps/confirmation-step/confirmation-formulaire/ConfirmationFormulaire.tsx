@@ -1,4 +1,5 @@
 import './ConfirmationFormulaire.css';
+import { useGlobalState } from '../../GlobalState';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 import {useState, ChangeEvent, FormEvent, useEffect} from 'react';
@@ -23,7 +24,6 @@ interface typeDonnees {
 }
 
 function ConfirmationFormulaire(){
-
 
     let navigate = useNavigate();
 

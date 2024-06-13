@@ -1,9 +1,31 @@
 
 import "./myspaceNavbar.css";
-import React from 'react';
-import {Routes, Route, Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link} from 'react-router-dom';
+import PackName from "../../../../enums/PackName";
+import { getClient } from "../../../../ApiService";
 
-const myspaceNavbar: React.FC = () => {
+interface typeDonnees {
+  pack: PackName|undefined;
+}
+
+const MyspaceNavbar: React.FC = () => {
+
+  const [donneesClient, setDonneesClient] = useState<typeDonnees>
+  ({ 
+       pack: undefined
+  });
+  
+  useEffect(() => {
+    getClient()
+        .then(data =>{
+            setDonneesClient({
+                pack: data.pack,
+            });
+        })
+        .catch(error => console.error(error));
+}, []);
+
   return (
     
     <div className="tab-container-x0">
@@ -19,4 +41,4 @@ const myspaceNavbar: React.FC = () => {
   );
 };
 
-export default myspaceNavbar;
+export default MyspaceNavbar;

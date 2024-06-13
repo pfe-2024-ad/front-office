@@ -49,7 +49,7 @@ function RoutesApp(  props: { setShowNavBar: any}) {
             <Route path="/my-space-offre" element={<MyspaceOffre/>} />
             <Route path="/my-space-documents" element={<DocumentPage/>} />
             {/* <Route path="/convention"   element={<ConventionClient setShowNavBar={() => {}} />} />  */} 
-            {/**  <Route path="/my-space-compte-unitaire-offre" element={<CompteUnitaireOffre  />}/>*/}
+            {/* <Route path="/my-space-compte-unitaire-offre" element={<CompteUnitaireOffre  />}/>*/}
            
         </Routes>
     )

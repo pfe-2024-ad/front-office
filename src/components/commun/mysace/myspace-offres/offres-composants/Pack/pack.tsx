@@ -20,8 +20,8 @@ interface typeDonnees {
 }
 
 const Pack: React.FC = () => {
-  const [donneesClient, setDonneesClient] = useState<typeDonnees>({ pack: undefined , dateCreation: undefined
-  });
+  const [donneesClient, setDonneesClient] = useState<typeDonnees>
+  ({ pack: undefined , dateCreation: undefined});
 
   const formatDate = (dateString: string | undefined) => {
     if (!dateString) return '';

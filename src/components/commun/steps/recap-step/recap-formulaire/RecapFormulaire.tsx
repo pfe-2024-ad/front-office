@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import StepClient from '../../../../../enums/StepClient';
 import { SetNewStep } from '../../../../../ApiService';
+import PackOffres from '../../../../../enums/PackOffres';
 
 
 interface typeDonnees {
@@ -18,13 +19,14 @@ interface typeDonnees {
    email: string|undefined;
    tel: string|undefined; 
    pack: PackName|undefined;
+   packOffre: PackOffres | undefined;
    adressAgence: string|undefined;
 }
 function RecapFormulaire(){
 
     const [donneesClient, setDonneesClient] = useState<typeDonnees>
     ({ nom: '', prenom: '', dateNaissance: '', cin: '', adresseResidence: '', ville: '',
-        email: '', tel: '', pack: undefined, adressAgence: ''
+        email: '', tel: '', pack: undefined, adressAgence: '',packOffre: undefined
     });
 
     let navigate = useNavigate();
@@ -49,7 +51,8 @@ function RecapFormulaire(){
                   email: data.email ,
                   tel: data.phone,
                   pack: data.pack,
-                  adressAgence: data.agence
+                  adressAgence: data.agence,
+                  packOffre : data.packOffre
               });
           })
           .catch(error => console.error(error));

@@ -27,7 +27,7 @@ const RegisteredClient: React.FC<typeDonnees> = ({donneesClient}) => {
       </tr>
       
       <tr>
-        <td>Téléphone   {donneesClient.phone}<span > Nom  {donneesClient.nom}</span></td><br/>
+        <td>Téléphone   {donneesClient.tel}<span > Nom  {donneesClient.nom}</span></td><br/>
       </tr> 
       <tr>
         <td>Email   {donneesClient.email} <span> Prénom   {donneesClient.prenom}</span></td><br/>

@@ -31,3 +31,63 @@
   font-size: 22px;
   color: rgb(88, 88, 88);
 }
+
+.product-services-card-x1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #ccc; 
+  border-radius: 10px; 
+  padding: 3px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  background-color: #fff; 
+  width:85%; 
+  max-width: 850px; 
+  margin: 0 auto; 
+  height: 125vh;
+}
+
+.title-service-cpt-uni {
+  padding: 40px;
+  position: relative;
+  top: 15px;
+  right:  173px;
+}
+
+.title-pack-cpt-uni-inf {
+  color: rgb(88, 88, 88);
+  margin-right: 410px;
+  position: relative;
+  top: 5px;
+
+}
+.cpt-service {
+  position: relative;
+  bottom: 30px;
+}
+.title-pack-cpt-uni-ps {
+  color: rgb(88, 88, 88);
+  margin-right: 350px;
+  position: relative;
+  bottom: 55px;
+
+}
+.service-cpt-uni {
+  position: relative;
+  bottom: 93px;
+}
+.convention-cpt-uni {
+  position: relative;
+  bottom: 145px;
+}
+.title-info-cpt-info {
+  color: rgb(88, 88, 88);
+  position: relative;
+  bottom: 120px;
+  right:  186px;
+}
+.cpt-uni-rib {
+  position: relative;
+  bottom: 110px;
+}
