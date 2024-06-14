@@ -56,6 +56,7 @@ const Condition : React.FC = () => {
       varie en fonction des composantes du package souscrit par le Client et 
       dont les caractéristiques seront précisées d’un commun accord entre les 
       parties dans les conditions particulières. <br/> <div className="convention-saut-de-page"></div>
+      <div style={{marginTop: "26vh"}}>
       – Assurance Protection : <br/>
       La souscription au Package permet au Client de bénéficier d’une assurance décès-invalidité couvrant au moins le montant de l’autorisation
       globale accordée par BANK OF AFRICA au Client au titre des présentes 
@@ -71,6 +72,8 @@ const Condition : React.FC = () => {
       – Assurance Carte Monétique  <br/>
       La souscription au Package permet au Client de bénéficier d'une assurance perte et vol adossée à la Carte susvisée et garantissant notamment 
       l’utilisation frauduleuse de ladite carte. <br/>
+      </div>
+    
        </div>
        <div className="container2-condition">
         Redevance"". Le paiement dudit montant se fait par prélèvements mensuels (au début de chaque mois),
@@ -136,6 +139,7 @@ const Condition : React.FC = () => {
         d’assurances sont annuels.  <br/>
         La résiliation du Package emporte : <br/>  <div className="convention-saut-de-page"></div>
         <img style={{ width: "140px", position: "absolute", left: "40px", top: "4040px"}} src={conventionLogoBmce}  alt="bmce logo" />
+        <div style={{marginTop: "25vh"}}>
         L'application au Client des conditions standard en vigueur relatives 
         notamment au paiement du tarif de l’assurance offerte dans le cadre du
         Package ; L’application au Client des conditions standards en vigueur en 
@@ -158,7 +162,7 @@ const Condition : React.FC = () => {
         du marché ou des changements de prestations. Etant entendu que toute 
         modification dans ce sens, sera portée à la connaissance du Client par 
         tout moyen approprié, préalablement à son entrée en vigueur. <br/>
-        
+        </div>
        </div>
        <div className="container4-condition">
         ARTICLE 6 : DONNEES ET INFORMATIONS PERSONNELLES  <br/>
@@ -214,11 +218,13 @@ const Condition : React.FC = () => {
         dispose d’un droit d’accès à ses données personnelles, d’un droit de 
         rectification de celles-ci ainsi que d'un droit d'opposition, pour des motifs 
         légitimes, au traitement de ses données. Pour exercer vos droits vous 
-        pouvez vous <div className="convention-saut-de-page"></div>adresser à BANK OF AFRICA, Compliance, 140 Avenue 
+        pouvez vous <div className="convention-saut-de-page"></div>
+        <div style={{marginTop: "25vh"}}>
+        adresser à BANK OF AFRICA, Compliance, 140 Avenue 
         Hassan II Casablanca. <br/>
         Ce traitement a été autorisé par la CNDP sous le n° A-RF-567/2020 en 
         date du 17/01/2021.
-        
+        </div>
        </div>
        
        <div className="container5-condition">
