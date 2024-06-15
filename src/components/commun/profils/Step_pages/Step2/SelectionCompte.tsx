@@ -9,13 +9,16 @@ interface Props_cpt {
 
 const Select_Cpt: React.FC<Props_cpt> = ({ onNextStep, onPrevStep }) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [selectedOption, setSelectedOption] = React.useState<string>();
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = event.target;
     if (checked) {
       setSelectedOptions((prevOptions) => [...prevOptions, value]);
+      setSelectedOption(value); 
     } else {
       setSelectedOptions((prevOptions) => prevOptions.filter((option) => option !== value));
+      
     }
   };
 

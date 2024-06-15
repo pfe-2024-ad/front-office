@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+}    
+  .setColorbackg-x0 {
+    background-color: rgb(221, 217, 217);
+    display: flex;
+    justify-content: start; 
+    align-items: center;
+    height: 10vh; 
+  }
+  
+  .center-content-x0 {
+    margin-top: 195px;
+    font-size: 16px;
+    margin-left: 235px;
+
+  }
+  
+  .welcome-mess-user-x0 {
+   position: relative;
+   bottom: 25px;
+  }
+  
+  .welcome-mess-x0 {
+    position: relative;
+    bottom: 40px;
+    font-size: 18px;
+    padding: 10px;
+    color: rgb(0, 0, 61);
+  }
+  

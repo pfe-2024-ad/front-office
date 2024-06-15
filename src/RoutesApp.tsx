@@ -1,4 +1,4 @@
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, useParams} from 'react-router-dom'
 import Home from './components/home/Home'
 import Contact from './components/commun/contact/Contact'
 import Particulier from './components/commun/profils/Particulier'
@@ -14,9 +14,20 @@ import RecapStep from './components/commun/steps/recap-step/RecapStep'
 import MaDemande from './components/commun/ma-demande/MaDemande'
 import PaymentStep from './components/commun/steps/payment-step/PaymentStep'
 import RdvStep from './components/commun/steps/rdv-step/RdvStep'
-import MySpaceStep from './components/commun/steps/my-space-step/MySpaceStep'
+import Myspace from './components/commun/mysace/myspace'
+import MyspaceOffre from './components/commun/mysace/myspace-offres/UserOffre/myspaceOffre'
+import DocumentPage from './components/commun/mysace/myspace-documents/DocumentPage'
 
-function RoutesApp() {
+
+
+
+  
+
+function RoutesApp(  props: { setShowNavBar: any}) {
+
+    const { setShowNavBar } = props;
+    const { selectedOption } = useParams<{ selectedOption: string }>();
+  
     return(
         <Routes>
             <Route path="/" element={<Home />} />
@@ -34,7 +45,12 @@ function RoutesApp() {
             <Route path="/recap-donnees" element={<RecapStep />} />
             <Route path="/effectuer-paiement" element={<PaymentStep />} />
             <Route path="/prendre-rdv" element={<RdvStep />} />
-            <Route path="/my-space" element={<MySpaceStep />} />
+            <Route path="/my-space" element={<Myspace />} />
+            <Route path="/my-space-offre" element={<MyspaceOffre/>} />
+            <Route path="/my-space-documents" element={<DocumentPage/>} />
+            {/* <Route path="/convention"   element={<ConventionClient setShowNavBar={() => {}} />} />  */} 
+            {/* <Route path="/my-space-compte-unitaire-offre" element={<CompteUnitaireOffre  />}/>*/}
+           
         </Routes>
     )
 }

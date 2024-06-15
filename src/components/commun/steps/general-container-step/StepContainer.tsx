@@ -8,7 +8,10 @@ interface StepContainerProps {
     containerTitle: string;
   }
   
-function StepContainer ({ children, styleFleche, imgFleche, containerTitle }: StepContainerProps ) {
+function StepContainer
+
+
+({ children, styleFleche, imgFleche, containerTitle }: StepContainerProps ) {
     return(<>
         <div className="step-container">
             <div className="cercle-div-fleche" style={styleFleche}>

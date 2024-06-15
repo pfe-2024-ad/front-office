@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+}  
+
+.container-background-myspace {
+    background-color: rgb(221, 217, 217);
+    min-height: 100vh;
+    
+  }
+  
+  .empty-space-myspace {
+    background-color: rgb(221, 217, 217);
+    min-height: 20vh;
+  }
+
+  .header-style-myspace {
+    margin-bottom: 45px;
+  }

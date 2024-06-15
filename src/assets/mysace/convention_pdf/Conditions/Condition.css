@@ -1,0 +1,63 @@
+.conv-bmce-logo {
+  margin-bottom: 20px; 
+}
+
+.condition-convention-myspace {
+  font-size: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 20px; 
+  font-family: 'Arial', sans-serif;
+}
+
+.container1-condition,
+.container3-condition,     
+.container5-condition {
+  padding: 20px; 
+  margin-bottom: 100px; 
+  margin-top: -110px;
+ 
+}
+
+
+.container2-condition {
+  padding: 20px;
+  margin-top: -110px;
+  margin-bottom: 0px; 
+}
+
+.container4-condition { 
+  padding: 20px; 
+  margin-bottom: 100px; 
+  margin-top: -435px;
+ 
+}
+h2 {
+  font-size: 12px; 
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+  text-align: justify; 
+}
+
+@media (max-width: 768px) {
+  .condition-convention-myspace {
+    grid-template-columns: 1fr; /* Single column layout on smaller screens */
+  }
+}
+.convention-saut-de-page {
+  margin-bottom: 120px;
+}
+.conv-pg5 {
+  margin-top: 100px;
+}
+
+
+ 
+
